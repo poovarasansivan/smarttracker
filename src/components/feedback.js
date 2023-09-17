@@ -30,6 +30,11 @@ const FeedbackForm = () => {
     console.log('Email:', email);
     console.log('Feedback:', feedback);
     console.log('Rating:', rating);
+    setName('');
+    setPhone('');
+    setEmail('');
+    setFeedback('');
+    setRating(0);
   };
 
   return (
