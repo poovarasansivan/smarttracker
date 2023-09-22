@@ -30,6 +30,18 @@ const EmergencyScreen = () => {
                 alignItems: 'center',
                 marginTop: 20,
             }}
+                onPress={() => handleEmergencyPress('9566664256')}>
+                <Text h3 style={{ color: 'white', fontSize: 18, fontWeight: '600' }}>KARUPPUSAMY (9566664256)</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={{
+                backgroundColor: '#2596be',
+                width: 190,
+                height: 40,
+                borderRadius: 10,
+                justifyContent: 'center',
+                alignItems: 'center',
+                marginTop: 20,
+            }}
                 onPress={() => handleEmergencyPress('101')}>
                 <Text h3 style={{ color: 'white', fontSize: 18, fontWeight: '600' }}>Fire (101)</Text>
             </TouchableOpacity>

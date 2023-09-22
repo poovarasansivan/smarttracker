@@ -17,7 +17,7 @@ function MapComponent({ navigation }) {
     useEffect(() => {
         const interval = setInterval(() => {
             axios({
-                url: 'http://10.10.71.96:8080/getTrack',
+                url: 'http://10.10.180.13:8080/getTrack',
                 method: 'post'
             }).then((res) => {
                 setCarPositionIndex(res.data.data);
@@ -43,7 +43,10 @@ function MapComponent({ navigation }) {
 
                 {carPositionIndex !== 0 && (
                     <Marker
-                        coordinate={{ latitude: parseFloat(carPositionIndex.latitude), longitude: parseFloat(carPositionIndex.longitude) }}
+                        coordinate={{
+                            latitude: parseFloat(carPositionIndex.latitude) || 0,
+                            longitude: parseFloat(carPositionIndex.longitude) || 0
+                        }}
                         rotation={carPositionIndex.course - 100}
                         image={require('../../assets/img/bus.png')}
                     >
@@ -51,22 +54,29 @@ function MapComponent({ navigation }) {
                 )}
             </MapView>
             {/* <Button title="Feedback" onPress={() => navigation.navigate("feedback")} color="#2596be" /> */}
-                {/* <TouchableOpacity style={styles.feedbackButton}  >
+            {/* <TouchableOpacity style={styles.feedbackButton}  >
                     <Text style={styles.feedbackText} >Feedback</Text>
                 </TouchableOpacity> */}
-        
-        <Button onPress={() => {
-          navigation.navigate('emergency', { name: 'emergency' })
-        }
-        } style={styles.EmergencyButton}>
-          <Text style={styles.Emergencytext}>Emergency</Text>
-        </Button>
-        <Button onPress={() => {
-          navigation.navigate('feedback', { name: 'Jane' })
-        }
-        } style={styles.feedbackButton}>
-          <Text style={styles.feedbackText}>FeedBack</Text>
-        </Button>
+
+            <Button onPress={() => {
+                navigation.navigate('emergency', { name: 'emergency' })
+            }
+            } style={styles.EmergencyButton}>
+                <Text style={styles.Emergencytext}>Emergency</Text>
+            </Button>
+            <Button onPress={() => {
+                navigation.navigate('support', { name: 'support' })
+            }
+            } style={styles.roundButton1}>
+                <Text style={styles.buttonText}>Support</Text>
+            </Button>
+
+            <Button onPress={() => {
+                navigation.navigate('feedback', { name: 'Jane' })
+            }
+            } style={styles.feedbackButton}>
+                <Text style={styles.feedbackText}>FeedBack</Text>
+            </Button>
         </View>
     );
 }
@@ -79,16 +89,18 @@ const styles = StyleSheet.create({
     map: {
         flex: 2,
     },
-    EmergencyButton:{
+
+
+    EmergencyButton: {
         position: 'absolute',
         bottom: 20,
         left: 20,
         backgroundColor: '#2596be',
         paddingVertical: 5,
-        paddingHorizontal: 20,
+        paddingHorizontal: 2,
         borderRadius: 8,
     },
-    Emergencytext:{
+    Emergencytext: {
         color: 'white',
         fontSize: 16,
     },
@@ -98,9 +110,25 @@ const styles = StyleSheet.create({
         right: 20,
         backgroundColor: '#2596be',
         paddingVertical: 5,
-        paddingHorizontal: 20,
+        paddingHorizontal: 7,
         borderRadius: 8,
     },
+    buttonText: {
+        color: 'white', 
+        fontSize: 16,
+        fontWeight: 'bold',
+      },
+      roundButton1: {
+        marginLeft:130,
+        width: 100,
+        height: 90,
+        justifyContent: 'center',
+        alignItems: 'center',
+        padding: 10,
+        borderRadius: 100,
+        backgroundColor: '#2596be',
+      },
+
     feedbackText: {
         color: 'white',
         fontSize: 16,
@@ -108,7 +136,7 @@ const styles = StyleSheet.create({
     boxContainer: {
         flex: 1,
         backgroundColor: 'white',
-        padding: 20,
+        padding: 15,
         gap: 0,
         borderColor: 'lightgrey',
         borderWidth: 1,

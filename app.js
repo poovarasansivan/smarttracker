@@ -61,6 +61,7 @@ import Home from './src/routes/home';
 import MapComponent from './src/components/map';
 import FeedbackForm from './src/components/feedback';
 import EmergencyScreen from './src/components/panic';
+import ChatPage from './src/components/chat';
 const Stack = createNativeStackNavigator();
 
 const App = () => {
@@ -88,6 +89,13 @@ const App = () => {
         }} />
            <Stack.Screen name="emergency" component={EmergencyScreen} options={{
           title: "Emergency",
+          headerTintColor: 'white',
+          headerStyle: {
+            backgroundColor: '#2596be',
+          },
+        }} />
+        <Stack.Screen name="support" component={ChatPage} options={{
+          title: "Support",
           headerTintColor: 'white',
           headerStyle: {
             backgroundColor: '#2596be',

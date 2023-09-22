@@ -67,3 +67,4 @@ const normalHeadingStyle = {
 }
 
 export default Home;
+
