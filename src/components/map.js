@@ -16,7 +16,7 @@ function MapComponent({ navigation }) {
     useEffect(() => {
         const interval = setInterval(() => {
             axios({
-                url: 'http://10.10.188.21:8080/getTrack',
+                url: 'http://192.168.43.84:8080/getTrack',
                 method: 'post'
             }).then((res) => {
                 setCarPositionIndex(res.data.data);
