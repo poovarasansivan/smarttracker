@@ -5,7 +5,6 @@ import { Dimensions } from 'react-native';
 import axios from "axios";
 import { Button } from "react-native-paper";
 
-
 const screenWidth = Dimensions.get('window').width;
 
 const markerSize = screenWidth * 0.1;
@@ -17,7 +16,7 @@ function MapComponent({ navigation }) {
     useEffect(() => {
         const interval = setInterval(() => {
             axios({
-                url: 'http://10.10.180.13:8080/getTrack',
+                url: 'http://10.10.188.21:8080/getTrack',
                 method: 'post'
             }).then((res) => {
                 setCarPositionIndex(res.data.data);

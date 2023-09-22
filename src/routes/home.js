@@ -7,6 +7,7 @@ import { useState } from "react";
 function Home({ navigation }) {
 
   const [username, setUserName] = useState('')
+  const [Password, setPassword] = useState('')
 
   return (
     <SafeAreaView style={{ backgroundColor: 'white', height: '100 %' }}>
@@ -22,7 +23,8 @@ function Home({ navigation }) {
         <Text style={textTitleStyle}>Login </Text>
         <Text style={textStyle}>Back to your Account</Text>
       </View>
-      <View style={{
+      
+      <View style={{  
         padding: 20,
         flex: 1,
         display: 'flex',
@@ -32,7 +34,7 @@ function Home({ navigation }) {
       }}>
         <View>
           <InputGroup label={'Username'} change={setUserName} />
-          <InputGroup label={'Password'} />
+          <InputGroup label={'Password'} change={setPassword} />
         </View>
         <Button onPress={() => {
           username == 'admin'
